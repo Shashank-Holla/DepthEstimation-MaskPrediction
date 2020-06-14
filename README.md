@@ -50,7 +50,7 @@ Model building is broken down into the following parts. We will work on the part
 
 Overlayed, mask and depth images considered this model are of Home interiors and cats as background and foreground respectively.
 
-Dataset details can be found here - [Schrodinger's Cat dataset]https://github.com/Shashank-Holla/Schrodingers_Cat-Dataset)
+Dataset details can be found here - [Schrodinger's Cat dataset](https://github.com/Shashank-Holla/Schrodingers_Cat-Dataset)
 
 ### Data ingestion- Dataset and Dataloader
 
