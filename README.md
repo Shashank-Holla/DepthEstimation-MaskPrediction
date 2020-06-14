@@ -13,35 +13,35 @@ Model building is broken down into the following parts. We will work on the part
 
 ## Pre model training
 
-- [X] - [Dataset](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/README.md#dataset)
+- [X] - [Dataset](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/README.md#dataset)
 
-- [X] - [Data ingestion- Dataset and Dataloader](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/README.md#data-ingestion--dataset-and-dataloader)
+- [X] - [Data ingestion- Dataset and Dataloader](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/README.md#data-ingestion--dataset-and-dataloader)
 
-- [] - [Image augmentation](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/README.md#image-augmentation)
+- [] - [Image augmentation](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/README.md#image-augmentation)
 
 
 ## Model Training
 
-- [X] - [Model Architecture](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/README.md#model-architecture)
+- [X] - [Model Architecture](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/README.md#model-architecture)
 
-- [X] - [Choose the Loss function](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/README.md#choose-the-loss-function)
+- [X] - [Choose the Loss function](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/README.md#choose-the-loss-function)
 
-- [X] - [Model parameters and hyperparameters](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/README.md#model-parameters-and-hyper-parameters)
+- [X] - [Model parameters and hyperparameters](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/README.md#model-parameters-and-hyper-parameters)
 
-- [X] - [Optimization](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/README.md#optimization)
+- [X] - [Optimization](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/README.md#optimization)
 
 
 
 ## Output of the model
 
-- [X] - [Evaluating the output](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/README.md#evaluating-the-output)
+- [X] - [Evaluating the output](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/README.md#evaluating-the-output)
 
 
 ## Results and Observations
 
-- [X] - [Run results](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/README.md#results)
+- [X] - [Run results](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/README.md#results)
 
-- [X] - [Observations](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/README.md#observations)
+- [X] - [Observations](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/README.md#observations)
 
 
 ## Pre model training
@@ -56,12 +56,12 @@ Dataset details can be found here - [Session14](https://github.com/Shashank-Holl
 
 Custom dataset is built to read and provide a dictionary containing quartet of images- background image, background-foreground image, mask and depth image. The quartet of images are ensured to have the same context, that is, the same background and same location of the foreground in the images.
 
-Find the code [here](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/data/schrodingersCatDataset.py)
+Find the code [here](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/data/schrodingersCatDataset.py)
 
 ### Image Augmentation
 
 Image normalization and image resize have been applied. 
-Earlier intention was to apply padding with border reflect and random crop to provide further augmented data and to apply RGB shift pixelwise transforms. Since random crop and probability based transforms are applied an image at a time, the context that is present in the quartet of images is lost. Therefore these have not been applied. Find the code [here](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/data/albumentations_transform.py)
+Earlier intention was to apply padding with border reflect and random crop to provide further augmented data and to apply RGB shift pixelwise transforms. Since random crop and probability based transforms are applied an image at a time, the context that is present in the quartet of images is lost. Therefore these have not been applied. Find the code [here](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/data/albumentations_transform.py)
 
 As of now, probability based transform on pair of images without losing context is possible. It is shown here. Further understanding is required to apply transform in the same order and probability to the 4 images. 
 
@@ -73,9 +73,9 @@ As of now, probability based transform on pair of images without losing context 
     <TH>Augmented mask image</TH>
   </TR>
    <TR>
-      <TD><img src="https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/Images/imageAugmentation_bgfg.jpg" alt="GT_mask"
+      <TD><img src="https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/Images/imageAugmentation_bgfg.jpg" alt="GT_mask"
 	title="augbg_fg" width="300" height="300" /></TD>
-      <TD><img src="https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/Images/imageAugmentation_mask.jpg" alt="Pred-Mask"
+      <TD><img src="https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/Images/imageAugmentation_mask.jpg" alt="Pred-Mask"
 	title="Prediction_Mask" width="300" height="300" /></TD>
    </TR>
 </TABLE>
@@ -92,13 +92,13 @@ To predict the depth and mask maps, the output of the model needs to be dense. T
 The encoder segment of the model consists of 4 encoder blocks. Each of the encoder blocks uses 3x3 regular convolution and 3x3 dilated convolution. Dilated convolution is used to capture the spatial information of the pixels. The result of these convolutions are concatenated. Further, the channel size is halved using 1x1 pointwise convolution.
 
 <p>
-<img src="https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/Images/Encoder.jpg" alt="Pred-Mask"
+<img src="https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/Images/Encoder.jpg" alt="Pred-Mask"
 	title="Prediction_Mask" width="400" height="300" /></p>
 
 #### Decoder
 The decoder segment consists of 4 decoder blocks. The resolution of the feature maps are upscaled by a factor of 2 in each of the decoder blocks using pointwise convolution and pixel-shuffle. Pointwise convolution is here used to double the number of channels. Pixel-shuffle is later used to upscale the resolution.
 
-<p><img src="https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/Images/decoder.jpg" width="400" height="200" /></p>
+<p><img src="https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/Images/decoder.jpg" width="400" height="200" /></p>
 
 
 
@@ -106,10 +106,10 @@ The number of parameters used by the model is- 5,230,720. Forward/Backward pass 
 
 **Full Architecture**
 <p>
-<img src="https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/Images/Full_architecture.jpg" width="800" height="400" /></p>
+<img src="https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/Images/Full_architecture.jpg" width="800" height="400" /></p>
 
 
-Find the code [here](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/models/depthmasknet.py)
+Find the code [here](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/models/depthmasknet.py)
 
 
 ### Choose the Loss function
@@ -120,12 +120,12 @@ For mask segmentation prediction, (BCE + Dice) loss function is considered.
 
 Binary cross entropy loss provides large penalty when incorrect predictions are made with high probability. This is combined with Dice Loss (1-Dice Coefficient). Dice coefficient provides measure of overlap between the ground truth and the predicted output.
 
-Code for the BCE+Dice loss can be found [here](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/loss.py) 
+Code for the BCE+Dice loss can be found [here](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/loss.py) 
 
 
 For depth map prediction, using just BCE+Dice loss gives result where the edges and contours of the background is lost. One result is shared below.
 
-![](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/Images/Depth_1_onePixelShuffle.jpg)
+![](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/Images/Depth_1_onePixelShuffle.jpg)
 
 Hence, for depth predictions, SSIM and L1 loss is also considered.
 
@@ -175,7 +175,7 @@ To evaluate the model, the following metrics are considered. Sigmoid of the pred
 
 **Root Mean Square Error** - It calculates the pixelwise root mean square between thr ground truth and prediction.
 
-Refer the code for the metrics [here](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/metrics/metrics.py#L40)
+Refer the code for the metrics [here](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/metrics/metrics.py#L40)
 
 ## Results and Observations
 
@@ -193,9 +193,9 @@ Below are the results for the run on 192x192 resolution images. Further results 
     <TH>Prediction - Mask</TH>
   </TR>
    <TR>
-      <TD><img src="https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/Images/mask_E1_B8750_20200530-203614.jpg" alt="GT_mask"
+      <TD><img src="https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/Images/mask_E1_B8750_20200530-203614.jpg" alt="GT_mask"
 	title="Ground Truth-Mask" width="400" height="400" /></TD>
-      <TD><img src="https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/Images/P_mask_E1_B8750_20200530-203614.jpg" alt="Pred-Mask"
+      <TD><img src="https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/Images/P_mask_E1_B8750_20200530-203614.jpg" alt="Pred-Mask"
 	title="Prediction_Mask" width="400" height="400" /></TD>
    </TR>
 </TABLE>
@@ -207,9 +207,9 @@ Below are the results for the run on 192x192 resolution images. Further results 
     <TH>Prediction - Depth</TH>
   </TR>
    <TR>
-      <TD><img src="https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/Images/depth_E1_B8750_20200530-203614.jpg" alt="GT_depth"
+      <TD><img src="https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/Images/depth_E1_B8750_20200530-203614.jpg" alt="GT_depth"
 	title="GroundTruth_Depth" width="400" height="400" /></TD>
-      <TD><img src="https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/Images/P_depth_E1_B8750_20200530-203614.jpg" alt="Pred-Depth"
+      <TD><img src="https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/Images/P_depth_E1_B8750_20200530-203614.jpg" alt="Pred-Depth"
 	title="Prediction_Depth" width="400" height="400" /></TD>
    </TR>
 </TABLE>
@@ -219,7 +219,7 @@ Below are the results for the run on 192x192 resolution images. Further results 
 
 Below is the trend for the metrics collected during train/test 
 
-![](https://github.com/Shashank-Holla/TSAI-EVA4/blob/master/Session15_MaskDepthPrediction/Images/run_metrics.jpg)
+![](https://github.com/Shashank-Holla/DepthEstimation-MaskPrediction/blob/master/Images/run_metrics.jpg)
 
 
 ### Observations
